@@ -8,7 +8,9 @@ class DockingStation
   end
 
   def dock
-     @station << Bike.new
+     
+     raise TypeError, "This docking station is full." if @station.length == 1
+  	 @station << Bike.new
   end
 
   # def dock_status

@@ -24,4 +24,9 @@ describe DockingStation do
   it 'returns a TypeError when dock_status is empty' do
     expect { subject.release_bike }.to raise_error{ |error| error.should be_a (TypeError) }
   end
+
+  it 'returns a TypeError when dock_status is full' do
+  	subject.dock
+  	expect { subject.dock }.to raise_error{ |error| error.should be_a (TypeError) }
+  end
 end
