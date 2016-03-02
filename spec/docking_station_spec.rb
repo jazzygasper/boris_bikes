@@ -10,11 +10,14 @@ describe DockingStation do
 
   describe '#dock' do
     it 'does not dock bike' do
-     20.times {subject.dock(Bike.new)}
+     DockingStation::DEFAULT_CAPACITY.times {subject.dock(Bike.new)}
      expect { subject.dock(Bike.new) }.to raise_error "no docks available"
     end
   end
 
+it 'it changes capacity' do
+    expect(DockingStation.new(40)).to eq DockingStation
+end
 
   it 'docks bike' do
     bike = Bike.new
