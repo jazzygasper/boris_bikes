@@ -8,14 +8,18 @@ describe DockingStation do
     expect { subject.release_bike }.to raise_error "no bikes available"
   end
 
-  it 'does not dock bike' do
-     subject.dock(Bike.new)
+  describe '#dock' do
+    it 'does not dock bike' do
+     20.times {subject.dock(Bike.new)}
      expect { subject.dock(Bike.new) }.to raise_error "no docks available"
+    end
   end
+
 
   it 'docks bike' do
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+    subject.dock(bike)
+    expect(subject.bikes[0]).to eq bike
   end
 
   it 'releases working bike' do
