@@ -34,4 +34,8 @@ describe DockingStation do
   	expect(subject.capacity = 10).to eq 10
   end
 
+  it "won't release a broken bike" do
+    subject.dock
+    expect(subject.release_bike.working?).to be false
+  end
 end

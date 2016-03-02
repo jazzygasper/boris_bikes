@@ -9,17 +9,21 @@ class DockingStation
   def initialize
    	@bike = Bike.new
     @bikes = []
-    @capacity =DEFAULT_CAPACITY
+    @capacity = DEFAULT_CAPACITY
   end
 
   def dock
      raise TypeError, "This docking station is full." if full?
-  	 @bikes << bike
-  end
+      @bikes << bike
+    end
 
   def release_bike
     raise TypeError, "No more bikes." if empty?
-    @bikes.pop
+    if bike.working?
+      @bikes.pop
+    else
+      "BROKEBITCHES"
+    end
   end
 
   private
