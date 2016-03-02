@@ -1,16 +1,20 @@
 require_relative 'bike'
 
+
 class DockingStation
-  attr_reader :station
+  attr_reader :bikes
+
+  attr_accessor :bike
 
   def initialize
-    @station = []
+   	@bike = Bike.new
+    @bikes = []
   end
 
   def dock
      
-     raise TypeError, "This docking station is full." if @station.length == 1
-  	 @station << Bike.new
+     raise TypeError, "This docking station is full." if @bikes.length == 20
+  	 @bikes << bike
   end
 
   # def dock_status
@@ -18,11 +22,13 @@ class DockingStation
   # end
 
   def release_bike
-    raise TypeError, "No more bikes." if @station.empty? == true
+    raise TypeError, "No more bikes." if @bikes.empty? == true
+    @bikes.pop
   end
 
-  def bike
-    Bike.new
-  end
+  # def bike
+  #   Bike.new
+  # end
 
 end
+
