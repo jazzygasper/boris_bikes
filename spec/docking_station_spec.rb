@@ -1,17 +1,16 @@
 require 'docking_station'
 
 describe DockingStation do
+
   it { is_expected.to respond_to :release_bike }
 
-  station = DockingStation.new
-
   it 'fails if no bikes' do
-    expect { subject.release_bike }.to raise_error
+    expect { subject.release_bike }.to raise_error "no bikes available"
   end
 
-  it 'fails if no docks available' do
-    bike = Bike.new
-    expect {subject.dock(bike) }.to raise_error
+  it 'does not dock bike' do
+     subject.dock(Bike.new)
+     expect { subject.dock(Bike.new) }.to raise_error "no docks available"
   end
 
   it 'docks bike' do
