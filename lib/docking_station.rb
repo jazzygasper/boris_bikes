@@ -1,7 +1,7 @@
 require_relative 'bike'
 
 class DockingStation
-  attr_reader :bike
+  attr_reader :bike, :full
 
   def release_bike
     fail 'no bikes available' unless @bike
@@ -9,11 +9,11 @@ class DockingStation
   end
 
   def dock(bike)
-    fail 'no docks available' unless @full == true
+    fail 'no docks available' unless @full == false
     @bike = bike
   end
 
-  def full?
+  def full
   @full = true
   end
 end
