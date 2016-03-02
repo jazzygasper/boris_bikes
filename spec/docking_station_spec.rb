@@ -21,13 +21,13 @@ describe DockingStation do
   expect(subject.dock.length).to eq 1 # may be issue depdending on how many bikes a station can hold.
   end
 
-  it 'returns a TypeError when dock_status is empty' do
+  it 'returns a TypeError when #dock is empty' do
     expect { subject.release_bike }.to raise_error{ |error| error.should be_a (TypeError) }
   end
 
-  it 'returns a TypeError when dock_status is full with 20 bikes' do
-  	
-  	expect { 21.times {subject.dock} }.to raise_error{ |error| error.should be_a (TypeError) }
+  it 'returns a TypeError when #dock is full with default capacity of bikes' do
+      bikes = DockingStation::DEFAULT_CAPACITY + 1
+  	expect { (bikes).times {subject.dock} }.to raise_error{ |error| error.should be_a (TypeError) }
   end
 
 end
