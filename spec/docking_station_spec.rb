@@ -20,5 +20,4 @@ describe DockingStation do
   expect(subject.dock(param)).to be  param
   end
 
-  it 
 end

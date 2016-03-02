@@ -1,9 +1,7 @@
 require_relative 'bike'
 
 class DockingStation
-
   attr_reader :dock_set
-
 
   def initialize
     @dock_set = []
