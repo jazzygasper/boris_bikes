@@ -9,6 +9,11 @@ describe DockingStation do
     expect { subject.release_bike }.to raise_error
   end
 
+  it 'fails if no docks available' do
+    bike = Bike.new
+    expect {subject.dock(bike) }.to raise_error
+  end
+
   it 'docks bike' do
     bike = Bike.new
     expect(subject.dock(bike)).to eq bike
