@@ -30,4 +30,8 @@ describe DockingStation do
   	expect { (bikes).times {subject.dock} }.to raise_error{ |error| error.should be_a (TypeError) }
   end
 
+  it 'can asign a new maximum capacity from 20 to 10' do
+  	expect(subject.capacity = 10).to eq 10
+  end
+
 end
