@@ -24,6 +24,7 @@ describe DockingStation do
     expect(subject.release_bike).to eq bike
   end
 
+
   it { is_expected.to respond_to(:bike) }
 
   it 'returns docked bikes' do
