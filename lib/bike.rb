@@ -1,11 +1,11 @@
 class Bike
-  attr_accessor :working
+  attr_accessor :broken
 
-  # def initialize
-  #   @broken = false
-  # end
+  def initialize
+     @broken = false
+   end
 
   def working?
-    @working = true
+    @broken ?  false : true
   end
 end

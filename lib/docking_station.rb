@@ -14,12 +14,18 @@ class DockingStation
 
   def dock
      raise TypeError, "This docking station is full." if full?
-      @bikes << bike
+     
+  #    if bike.working
+  #     @bikes << bike
+	 # else
+	 #  bike.working=false  
+	   @bikes << bike
+	 # end
     end
 
   def release_bike
     raise TypeError, "No more bikes." if empty?
-    if bike.working?
+    if bike.broken == false
       @bikes.pop
     else
       "BROKEBITCHES"
