@@ -9,11 +9,11 @@ describe DockingStation do
 
   it 'expects instance of bike class' do
     subject = DockingStation.new
-    expect(subject.bike).to be_a Bike
+    expect(subject.create_bike).to be_a Bike
   end
 
   it 'returns a true if the bike is working' do
-    bike = subject.bike
+    bike = subject.create_bike
   expect(bike.working?).to be true
   end
 
@@ -40,13 +40,14 @@ describe DockingStation do
   end
 
   it "will break the bike" do
-  	subject.bike.broken = false
-  	expect(subject.bike.broken).to eq false
+  	subject.create_bike.broken = false
+  	expect(subject.create_bike.broken).to eq false
   end
 
   it "won't release a broken bike" do
-    subject.bike.broken = true
+    # subject.create_bike.broken = true
     subject.dock
+    subject.bikes[-1].broken = true
     expect(subject.release_bike).to eq "BROKEBITCHES"
   end
 end
