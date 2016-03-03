@@ -23,8 +23,14 @@ describe DockingStation do
     expect(subject.bike).to eq bike
   end
 
-it 'raises error' do
+it 'raises release bike error' do
   expect { subject.release_bike }.to raise_error "no bikes bitches"
+end
+
+it 'raises dock bike error' do
+  20.times { subject.dock(Bike.new)}
+  expect { subject.dock(bike) }.to raise_error "no space to dock bike"
+
 end
 
 end
