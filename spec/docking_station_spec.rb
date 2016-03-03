@@ -2,9 +2,9 @@ require 'docking_station'
 
 describe DockingStation do
 
-  it { is_expected.to respond_to 'release_bike'}
-
   it 'get bike' do
+    bike = Bike.new
+    subject.dock(bike)
     expect(subject.release_bike).to be_a Bike
   end
 
@@ -22,5 +22,9 @@ describe DockingStation do
     subject.dock(bike)
     expect(subject.bike).to eq bike
   end
+
+it 'raises error' do
+  expect { subject.release_bike }.to raise_error "no bikes bitches"
+end
 
 end
