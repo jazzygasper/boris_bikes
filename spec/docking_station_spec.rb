@@ -2,8 +2,6 @@
 
 
 describe DockingStation do
-  # it {is_expected.to respond_to :release_bike}
-  # it {is_expected.to respond_to(:dock)}
   it {is_expected.to respond_to :dock}
   it {is_expected.to respond_to :bike}
 
@@ -14,11 +12,11 @@ describe DockingStation do
 
   it 'returns a true if the bike is working' do
     bike = subject.create_bike
-  expect(bike.working?).to be true
+    expect(bike.working?).to be true
   end
 
   it 'dock the bike' do
-  expect(subject.dock.length).to eq 1 # may be issue depdending on how many bikes a station can hold.
+    expect(subject.dock.length).to eq 1
   end
 
   it 'returns a TypeError when #dock is empty' do
@@ -26,12 +24,12 @@ describe DockingStation do
   end
 
   it 'returns a TypeError when #dock is full with default capacity of bikes' do
-      bikes = DockingStation::DEFAULT_CAPACITY + 1
-  	expect { (bikes).times {subject.dock} }.to raise_error{ |error| error.should be_a (TypeError) }
+    bikes = DockingStation::DEFAULT_CAPACITY + 1
+    expect { (bikes).times {subject.dock} }.to raise_error{ |error| error.should be_a (TypeError) }
   end
 
   it 'can asign a new maximum capacity from 20 to 10' do
-  	expect(subject.capacity = 10).to eq 10
+    expect(subject.capacity = 10).to eq 10
   end
 
   it "will release a bike" do
@@ -40,12 +38,11 @@ describe DockingStation do
   end
 
   it "will break the bike" do
-  	subject.create_bike.broken = false
-  	expect(subject.create_bike.broken).to eq false
+    subject.create_bike.broken = false
+    expect(subject.create_bike.broken).to eq false
   end
 
   it "won't release a broken bike" do
-    # subject.create_bike.broken = true
     subject.dock
     subject.bikes[-1].broken = true
     expect(subject.release_bike).to eq "BROKEBITCHES"
