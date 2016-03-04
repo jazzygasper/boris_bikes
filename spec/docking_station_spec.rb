@@ -3,11 +3,11 @@ require 'docking_station'
 describe DockingStation do
 
   it 'get bike' do
-    subject.dock double(:bike)
-    expect(subject.release_bike).to be_a Bike
+    bike = double(:bike, :working? => true)
+    subject.dock(bike)
+    expect(subject.release_bike).to eq bike
   end
 
-  it { expect(double(:bike)).to be_working }
   it { is_expected.to respond_to(:dock).with(1).argument }
   # it { is_expected.to respond_to(:bike)}
 
@@ -41,8 +41,7 @@ it 'creates station with default capacity of 20' do
 end
 
 it 'does not release broken bike' do
-  bike = double(:bike)
-  bike.report_broken
+  bike = double(:bike, working?:false)
   subject.dock(bike)
   expect { subject.release_bike }.to raise_error "bike is broken bitches"
 end
