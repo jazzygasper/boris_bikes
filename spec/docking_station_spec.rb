@@ -29,9 +29,17 @@ it 'raises release bike error' do
 end
 
 it 'raises dock bike error' do
-  20.times { subject.dock(Bike.new)}
+  subject.capacity.times { subject.dock(Bike.new)}
   expect { subject.dock(Bike.new) }.to raise_error "no space to dock bike"
+end
 
+it 'creates station with capacity of 50' do
+  subject.capacity = 50
+  expect(subject.capacity).to eq 50
+end
+
+it 'creates station with default capacity of 20' do
+  expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
 end
 
 end
