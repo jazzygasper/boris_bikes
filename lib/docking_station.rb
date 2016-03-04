@@ -26,6 +26,10 @@ DEFAULT_CAPACITY = 20
     @bikes = @bikes + fixed_bikes
   end
 
+  def space_available
+    @capacity - @bikes.size
+  end
+
   private
 
   def empty?

@@ -15,6 +15,11 @@ it 'delivers bikes' do
   expect(subject.storage.size).to eq 0
 end
 
-
+it 'only delivers the amount of bikes the station can take' do
+  2.times{subject.take [double(:bikes)]}
+  station = double(:station, space_available:5)
+  expect(station).to receive(:space_available)
+  subject.deliver(station)
+end
 
 end

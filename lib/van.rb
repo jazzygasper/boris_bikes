@@ -10,8 +10,12 @@ def take(bikes)
   @storage = @storage + bikes
 end
 
-def deliver
-  @storage.pop(@storage.size)
+def deliver(station="all")
+  if station == "all"
+    @storage.pop(@storage.size)
+  else
+    @storage.pop(station.space_available)
+  end
 end
 
 end

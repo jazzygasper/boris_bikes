@@ -52,4 +52,12 @@ it 'collects bikes from van' do
   expect(subject.bikes.size).to eq 1
 end
 
+it 'tells us how many bikes it can take' do
+  bike = double(:bike)
+  10.times {subject.dock(bike)}
+  expect(subject.space_available).to eq(subject.capacity - 10)
+end
+
+
+
 end
