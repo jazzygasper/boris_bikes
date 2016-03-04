@@ -1,7 +1,7 @@
 require 'garage'
 
 describe Garage do
-
+it_behaves_like "a bike_container"
   describe '#collect' do
     it 'collects broken bikes' do
     subject.collect [double(:bikes)]
@@ -23,5 +23,7 @@ it 'gives bikes to van' do
   subject.load_van
   expect(subject.storage.size).to eq 0
 end
+
+
 
 end

@@ -1,14 +1,16 @@
+require_relative 'bike_container'
+
 class Van
 
-attr_reader :storage
+include BikeContainer
 
 def initialize
   @storage = []
 end
 
-def take(bikes)
-  @storage = @storage + bikes
-end
+# def collect(bikes)
+#   @storage = @storage + bikes
+# end
 
 def deliver(station="all")
   if station == "all"

@@ -13,7 +13,7 @@ describe DockingStation do
 
   it 'docks a bike' do
     subject.dock double(:bike)
-    expect(subject.bikes.size).to eq 1
+    expect(subject.storage.size).to eq 1
   end
 
   # it 'shows docked bike' do
@@ -49,7 +49,7 @@ end
 it 'collects bikes from van' do
   bike = double(:bike)
   subject.collect([bike])
-  expect(subject.bikes.size).to eq 1
+  expect(subject.storage.size).to eq 1
 end
 
 it 'tells us how many bikes it can take' do
@@ -58,6 +58,6 @@ it 'tells us how many bikes it can take' do
   expect(subject.space_available).to eq(subject.capacity - 10)
 end
 
-
+it_behaves_like "a bike_container"
 
 end

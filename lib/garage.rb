@@ -1,14 +1,16 @@
+require_relative 'bike_container'
+
 class Garage
 
-  attr_reader :storage
+include BikeContainer
 
   def initialize
     @storage = []
   end
 
-  def collect(broken_bikes)
-    @storage = @storage + broken_bikes
-  end
+  # def collect(broken_bikes)
+  #   @storage = @storage + broken_bikes
+  # end
 
   def fix_bikes
     @storage.each do |bike|
