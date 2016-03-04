@@ -13,6 +13,7 @@ DEFAULT_CAPACITY = 20
 
   def release_bike
     raise "no bikes bitches" if empty?
+    raise "bike is broken bitches" if bikes.last.working? == false
     bikes.pop
   end
 
