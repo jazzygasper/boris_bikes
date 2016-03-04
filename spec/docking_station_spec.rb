@@ -46,4 +46,10 @@ it 'does not release broken bike' do
   expect { subject.release_bike }.to raise_error "bike is broken bitches"
 end
 
+it 'collects bikes from van' do
+  bike = double(:bike)
+  subject.collect([bike])
+  expect(subject.bikes.size).to eq 1
+end
+
 end

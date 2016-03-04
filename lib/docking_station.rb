@@ -22,6 +22,9 @@ DEFAULT_CAPACITY = 20
     bikes << bike
   end
 
+  def collect(fixed_bikes)
+    @bikes = @bikes + fixed_bikes
+  end
 
   private
 
